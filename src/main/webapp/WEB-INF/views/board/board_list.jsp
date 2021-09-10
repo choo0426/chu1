@@ -21,7 +21,8 @@
 		<c:forEach var="row" items="${list}">
 		<tr>
 			<td>${row.bno}</td>
-			<td>${row.title}</td>
+			<!-- 게시물 조회를 위해서 get방식으로 게시물번호 값을 넘겨주자 -->
+            <td><a href="${path}/board/read.do?bno=${row.bno}">${row.title}</a></td>
 			<td>${row.writer}</td>
 			<td>
 				<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss" />

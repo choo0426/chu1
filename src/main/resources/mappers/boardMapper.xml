@@ -7,8 +7,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="board">
 
 	<select id="boardList" resultType="com.tech.chu.dto.BoardDTO">
-			select bno,title,writer,regdate,viewcnt
-			from board order by bno desc
+		select bno,title,writer,regdate,viewcnt
+		from board order by bno desc
+	</select>
+	<!-- Create 부분에 해당하는 글 쓰기 쿼리 -->
+	<insert id="boardWriter">
+		insert into board (bno, title, content, writer )
+		values ((select nvl(max(bno)+1,1) from board), #{title}, #{content},
+		#{writer} )
+	</insert>
+	<!-- 게시글 상세내용 불러오기 -->
+	<select id="boardRead" resultType="com.tech.chu.dto.BoardDTO">
+		select bno,title,content,writer,regdate,viewcnt
+		from board where bno = #{bno}
 	</select>
 
 </mapper>

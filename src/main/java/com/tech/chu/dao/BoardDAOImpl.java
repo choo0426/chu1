@@ -13,10 +13,21 @@ import com.tech.chu.dto.BoardDTO;
 public class BoardDAOImpl implements BoardDAO {
 	@Inject
 	SqlSession sqlSession;
-	
+
 	@Override
 	public List<BoardDTO> boardList() throws Exception {
-		return sqlSession.selectList("board.boardList"); 
+		return sqlSession.selectList("board.boardList");
 	}
 
+	// 게시물 글쓰기
+	@Override
+	public void writerBoard(BoardDTO bdto) throws Exception {
+		sqlSession.insert("board.boardWriter", bdto);
+	}
+
+	// 게시물 상세내용 불러오기
+	@Override
+	public BoardDTO boardRead(int bno) throws Exception {
+		return sqlSession.selectOne("board.boardRead", bno);
+	}
 }
