@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tech.chu.dao.BoardDAO;
 import com.tech.chu.dto.BoardDTO;
 import com.tech.chu.service.BoardService;
 
@@ -70,6 +71,13 @@ public class BoardController {
 	@RequestMapping(value = "update.do", method = RequestMethod.POST)
 	public String boardUpdatedo(BoardDTO bdto) throws Exception {
 		boardService.updateBoard(bdto);
+		return "redirect:list.do";	// 리스트로 리다이렉트
+	}
+	
+	// 게시글 삭제 실행
+	@RequestMapping(value = "delete.do", method = RequestMethod.GET)
+	public String boardDelete(@RequestParam int bno) throws Exception {
+		boardService.deleteBoard(bno);
 		return "redirect:list.do";	// 리스트로 리다이렉트
 	}
 

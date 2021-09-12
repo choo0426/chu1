@@ -36,4 +36,10 @@ public class BoardDAOImpl implements BoardDAO {
 	public void boardUpdate(BoardDTO bdto) throws Exception {
 		sqlSession.update("board.boardUpdate", bdto);
 	}
+	
+	// 게시물 삭제
+	@Override
+	public void boardDelete(int bno) throws Exception {
+		sqlSession.delete("board.boardDelete", bno);
+	}
 }
