@@ -30,4 +30,10 @@ public class BoardDAOImpl implements BoardDAO {
 	public BoardDTO boardRead(int bno) throws Exception {
 		return sqlSession.selectOne("board.boardRead", bno);
 	}
+	
+	// 게시물 수정
+	@Override
+	public void boardUpdate(BoardDTO bdto) throws Exception {
+		sqlSession.update("board.boardUpdate", bdto);
+	}
 }

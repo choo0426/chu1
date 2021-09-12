@@ -13,4 +13,7 @@ public interface BoardService {
 
 	// 게시물 상세내용 불러오기
 	public BoardDTO boardRead(int bno) throws Exception;
+	
+	// 게시물 수정 실행
+	public void updateBoard(BoardDTO bdto) throws Exception;
 }

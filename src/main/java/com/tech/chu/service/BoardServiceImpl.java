@@ -30,4 +30,10 @@ public class BoardServiceImpl implements BoardService {
 	public BoardDTO boardRead(int bno) throws Exception {
 		return boardDao.boardRead(bno);
 	}
+	
+	// 게시물 수정
+	@Override
+	public void updateBoard(BoardDTO bdto) throws Exception {
+		boardDao.boardUpdate(bdto);
+	}
 }

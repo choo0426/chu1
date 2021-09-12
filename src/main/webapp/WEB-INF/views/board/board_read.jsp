@@ -41,7 +41,7 @@
 		</tr>
 
 	</table>
-	<a href="#">수정</a>
+	<a href="${path}/board/updatepage?bno=${data.bno}">수정</a>
 	<a href="#">삭제</a>
 
 </body>
